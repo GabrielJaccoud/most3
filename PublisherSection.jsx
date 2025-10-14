@@ -7,12 +7,12 @@ const PublisherSection = () => {
         <div className="publisher-content fade-in-up">
           <div className="publisher-logo">
             <img 
-              src="/logo_humanizar.png" 
+              src="/2.png" 
               alt="Logo Editora Humanizar" 
               className="publisher-logo-img"
               loading="lazy"
               onError={(e) => {
-                e.target.src = '/2.png';
+                e.target.src = '/logo_humanizar.png';
               }}
             />
           </div>
