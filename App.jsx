@@ -13,8 +13,6 @@ import donaFormiga from '/dona_formiga.png'
 import cigarra from '/cigarra.png'
 import cuco from '/cuco.png'
 import alho from '/alho.png'
-import trilhaSonora from '/temamostardinha.wav'
-
 // Import components
 import MusicSection from './MusicSection'
 import AudiobookSection from './AudiobookSection'
@@ -31,30 +29,10 @@ import ReadingTipsModal from './ReadingTipsModal'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false)
-  const [volume, setVolume] = useState(50)
-  const audioRef = useRef(null)
+
   const [isReadingTipsModalOpen, setIsReadingTipsModalOpen] = useState(false);
 
-  // Audio controls
-  const toggleAudio = () => {
-    if (audioRef.current) {
-      if (isAudioPlaying) {
-        audioRef.current.pause()
-      } else {
-        audioRef.current.play().catch(console.error)
-      }
-      setIsAudioPlaying(!isAudioPlaying)
-    }
-  }
 
-  const handleVolumeChange = (e) => {
-    const newVolume = e.target.value
-    setVolume(newVolume)
-    if (audioRef.current) {
-      audioRef.current.volume = newVolume / 100
-    }
-  }
 
   // Scroll animations
   useEffect(() => {
@@ -185,34 +163,7 @@ function App() {
         </div>
       </nav>
 
-      {/* Audio Player */}
-      <div className="audio-player-fixed">
-        <div className="audio-player-content">
-          <div className="audio-info">
-            <span className="audio-icon-animated">🎵</span>
-            <span className="audio-title">Trilha do Mostardinha</span>
-          </div>
-          <div className="audio-controls">
-            <button className="audio-btn-fixed" onClick={toggleAudio}>
-              <span>{isAudioPlaying ? '⏸️' : '▶️'}</span>
-            </button>
-            <div className="volume-control">
-              <input
-                type="range"
-                className="volume-slider"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={handleVolumeChange}
-              />
-            </div>
-          </div>
-        </div>
-        <audio ref={audioRef} loop>
-          <source src={trilhaSonora} type="audio/wav" />
-          Seu navegador não suporta áudio.
-        </audio>
-      </div>
+
 
       {/* Hero Section */}
       <section id="inicio" className="hero">
