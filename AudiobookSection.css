@@ -30,9 +30,9 @@
 }
 
 .audiobook-cover img {
-  width: 80px;
+  width: 60px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
@@ -100,7 +100,7 @@
   }
 
   .audiobook-cover img {
-    width: 70px;
+    width: 50px;
   }
 
   .player-controls {
