@@ -33,7 +33,7 @@ const AudiobookSection = () => {
         <div className="audiobook-player-container fade-in-up" style={{ animationDelay: '200ms' }}>
           <div className="audiobook-player">
             <div className="audiobook-cover">
-              <img src="/assets/images/CAPA.png" alt="Capa do Audiobook Mostardinha" />
+              <img src="/CAPA.png" alt="Capa do Audiobook Mostardinha" />
             </div>
             <div className="audiobook-controls">
               <h3 className="audiobook-title">Mostardinha e sua Turma em: Temperópolis</h3>

@@ -1,7 +1,15 @@
 /* src/components/QuizSection.css */
 .quiz-section {
-  background-color: #fff;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   padding: 6rem 2rem;
+}
+
+.quiz-section .section-title {
+  color: white;
+}
+
+.quiz-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .quiz-container {
@@ -68,20 +76,35 @@
 .results-container {
   text-align: center;
   padding: 2rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .results-container h3 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.results-container p {
+  color: #555;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
 }
 
 .personagem-image {
-  width: 200px;
+  width: 250px;
   height: auto;
   border-radius: 15px;
   margin: 1.5rem auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.personagem-image:hover {
+  transform: scale(1.05);
 }
 
 .email-result-box {

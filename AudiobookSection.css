@@ -1,7 +1,16 @@
 /* src/components/AudiobookSection.css */
 .audiobook-section {
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   padding: 6rem 2rem;
+  color: white;
+}
+
+.audiobook-section .section-title {
+  color: white;
+}
+
+.audiobook-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .audiobook-player-container {
@@ -21,10 +30,15 @@
 }
 
 .audiobook-cover img {
-  width: 150px;
+  width: 200px;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.audiobook-cover img:hover {
+  transform: scale(1.05);
 }
 
 .audiobook-controls {

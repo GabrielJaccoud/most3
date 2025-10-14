@@ -144,24 +144,26 @@ const MusicSection = () => {
           <p className="section-subtitle">Cada canção conta um momento especial da jornada</p>
         </div>
 
-        <div className="music-player-main fade-in-up">
-          <div className="current-song-info">
-            <h3>{currentSong ? currentSong.title : 'Selecione uma música'}</h3>
-            <p>{currentSong ? currentSong.artist : 'Mostardinha'}</p>
+        {currentSong && (
+          <div className="music-player-main fade-in-up">
+            <div className="current-song-info">
+              <h3>{currentSong.title}</h3>
+              <p>{currentSong.artist}</p>
+            </div>
+            <div className="player-controls">
+              <button onClick={togglePlayPause}>{isPlaying ? '⏸️' : '▶️'}</button>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value={volume}
+                onChange={handleVolumeChange}
+                className="volume-slider"
+              />
+            </div>
+            <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
           </div>
-          <div className="player-controls">
-            <button onClick={togglePlayPause}>{isPlaying ? '⏸️' : '▶️'}</button>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value={volume}
-              onChange={handleVolumeChange}
-              className="volume-slider"
-            />
-          </div>
-          <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
-        </div>
+        )}
 
         <div className="music-grid">
           {songs.map((song) => (
@@ -193,17 +195,7 @@ const MusicSection = () => {
           ))}
         </div>
 
-        <div className="song-list fade-in-up">
-          <h4>Próximas Músicas:</h4>
-          <ul>
-            {songs.map((song) => (
-              <li key={song.id} onClick={() => playSong(song)} className={currentSong && currentSong.id === song.id ? 'active' : ''}>
-                <span>{song.title}</span>
-                <span>{song.duration}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+
       </div>
     </section>
   );

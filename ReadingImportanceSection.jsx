@@ -5,7 +5,7 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
     <section id="leitura-familia" className="section reading-importance-section">
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">📖 Mais do que uma história. Um momento entre vocês.</h2>
+          <h2 className="section-title">📖 Mais do que uma história.<br/>Um momento entre vocês.</h2>
           <p className="section-subtitle">Transforme a leitura em um vínculo afetivo inesquecível</p>
         </div>
 
@@ -13,10 +13,10 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
           <div className="reading-text fade-in-left">
             <p>
               Vivemos num mundo onde a tela afasta. Mas o Mostardinha foi criado para aproximar.
-              Ao ler com seu filho, você não está apenas passando uma história. Está compartilhando valores, emoções, riso e presença.
+              Ao ler com seu filho, você não está apenas passando uma história. <strong>Está compartilhando valores, emoções, riso e presença.</strong>
             </p>
             <p>
-              Uma leitura acompanhada é um presente. Cada capítulo pode ser uma semente de diálogo e encantamento entre vocês.
+              Uma leitura acompanhada é um presente. <strong>Cada capítulo pode ser uma semente de diálogo e encantamento entre vocês.</strong>
             </p>
             <p>
               A leitura em família é um dos pilares mais importantes para o desenvolvimento infantil e para o fortalecimento dos laços familiares.
@@ -51,7 +51,7 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
             <div className="image-card">
               <div className="image-icon">👨‍👩‍👧‍👦</div>
               <p>
-                Em Mostardinha, acreditamos no poder transformador das histórias.
+                <strong>Em Mostardinha, acreditamos no poder transformador das histórias.</strong><br/>
                 Incentive a leitura em sua casa e descubra um mundo de
                 possibilidades ao lado de seus filhos!
               </p>

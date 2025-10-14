@@ -5,6 +5,9 @@ const BehindScenesSection = () => {
     <section id="bastidores" className="section behind-scenes-section">
       <div className="container">
         <div className="section-header fade-in-up">
+          <div className="mundo-ninus-logo">
+            <img src="/logo-mundoninus.png" alt="Logo Mundo Ninus" className="logo-mundoninus" />
+          </div>
           <h2 className="section-title">🎬 Bastidores</h2>
           <p className="section-subtitle">Veja um pedacinho dos bastidores da dublagem!</p>
           <p>Assista à Jaque dublando a Dona Cigarra com direção de Gabriel Jaccoud.</p>

@@ -114,7 +114,23 @@ body {
 
 .btn-large {
   padding: 1rem 2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .btn-large {
+    font-size: 0.9rem;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+.btn-large:hover {
+  animation: pulse 0.6s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .btn-small {
@@ -218,14 +234,16 @@ body {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 1rem;
-  color: #2C3E50;
+  color: #1a252f;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #7F8C8D;
+  color: #495057;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 500;
 }
 
 /* Story Section */
@@ -253,6 +271,16 @@ body {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   max-width: 250px;
+}
+
+.sequence-item h3 {
+  color: #1a252f;
+  font-weight: 700;
+}
+
+.sequence-item p {
+  color: #495057;
+  font-weight: 500;
 }
 
 .sequence-icon {
@@ -300,13 +328,15 @@ body {
 .character-info h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
-  color: #2C3E50;
+  color: #1a252f;
+  font-weight: 700;
 }
 
 .character-quote {
   font-style: italic;
-  color: #7F8C8D;
+  color: #495057;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 
 /* Author Section */
@@ -1274,6 +1304,23 @@ body {
   color: white;
   padding: 80px 0;
   text-align: center;
+}
+
+.mundo-ninus-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logo-mundoninus {
+  max-width: 250px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo-mundoninus:hover {
+  transform: scale(1.05);
 }
 
 .behind-scenes-content {

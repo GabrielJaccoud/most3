@@ -15,12 +15,9 @@ const Footer = () => {
           <div className="footer-main">
             <div className="footer-logo">
               <img 
-                src="/assets/images/mostardinha.png" 
+                src="/mostardinha.png" 
                 alt="Mostardinha" 
                 className="footer-logo-img"
-                onError={(e) => {
-                  e.target.src = '/assets/images/Mostardinha(2).png';
-                }}
               />
               <span className="footer-logo-text">Mostardinha</span>
             </div>

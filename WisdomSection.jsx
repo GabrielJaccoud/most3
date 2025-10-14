@@ -7,13 +7,10 @@ const WisdomSection = () => {
         <div className="wisdom-content fade-in-up">
           <div className="wisdom-image">
             <img 
-              src="/assets/images/senhora_mostarda.png" 
+              src="/senhora_mostarda.png" 
               alt="Senhora Mostarda" 
               className="senhora-mostarda" 
               loading="lazy"
-              onError={(e) => {
-                e.target.src = '/assets/images/SenhoraMostarda(2).png';
-              }}
             />
           </div>
           <div className="wisdom-text">
