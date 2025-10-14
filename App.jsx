@@ -136,7 +136,7 @@ function App() {
               <li><a href="#personagens" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('personagens') }}>Personagens</a></li>
               <li><a href="#musicas" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('musicas') }}>Músicas</a></li>
               <li><a href="#audiobook" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('audiobook') }}>Audiobook</a></li>
-              <li><a href="#leitura-familia" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('leitura-familia') }}>Leitura em Família</a></li>
+              <li><a href="#leitura-familia" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('leitura-familia') }}>Leitura</a></li>
               <li><a href="#quiz" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('quiz') }}>Quiz</a></li>
               <li><a href="#vozes" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('vozes') }}>Vozes</a></li>
               <li><a href="#bastidores" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('bastidores') }}>Bastidores</a></li>
@@ -146,7 +146,7 @@ function App() {
 
             <div className="nav-cta">
               <a href="https://pay.hotmart.com/H100940670E" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-small">
-                Comprar - R$ 34,99
+                Comprar<br/>R$ 34,99
               </a>
             </div>
 
