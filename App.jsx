@@ -22,6 +22,7 @@ import VoicesSection from './VoicesSection'
 import BehindScenesSection from './BehindScenesSection'
 import WisdomSection from './WisdomSection'
 import PublisherSection from './PublisherSection'
+import AuthorSection from './AuthorSection'
 import FinalCTASection from './FinalCTASection'
 import Footer from './Footer'
 import ScrollIndicator from './ScrollIndicator'
@@ -324,6 +325,9 @@ function App() {
 
       {/* Publisher Section */}
       <PublisherSection />
+
+      {/* Author Section */}
+      <AuthorSection />
 
       {/* Final CTA Section */}
       <FinalCTASection />

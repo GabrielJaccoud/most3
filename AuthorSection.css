@@ -1,0 +1,133 @@
+/* Author Section */
+.author-section {
+  background: linear-gradient(135deg, #16A085 0%, #1ABC9C 100%);
+  color: white;
+  padding: 4rem 0;
+}
+
+.author-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.author-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.author-photo {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.author-photo:hover {
+  transform: scale(1.05);
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.author-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ECF0F1;
+}
+
+.author-description strong {
+  color: #F4D03F;
+  font-weight: 600;
+}
+
+.author-mission {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 4px solid #F4D03F;
+  margin-top: 1rem;
+}
+
+.author-mission blockquote {
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.8;
+  margin: 0 0 1rem 0;
+  color: #FFF;
+}
+
+.author-mission cite {
+  display: block;
+  text-align: right;
+  font-size: 1rem;
+  color: #F4D03F;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .author-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .author-photo {
+    max-width: 200px;
+  }
+
+  .author-description {
+    font-size: 1rem;
+  }
+
+  .author-mission blockquote {
+    font-size: 1.1rem;
+  }
+
+  .author-mission {
+    padding: 1.5rem;
+  }
+}
+
