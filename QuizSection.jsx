@@ -1,177 +1,143 @@
 // src/components/QuizSection.jsx
 import React, { useState } from 'react';
-import mostardinhaImg from '/mostardinha.png';
-import maioneseImg from '/maionese.png';
-import salsinhaImg from '/salsinha.png';
-import alhoImg from '/alho.png';
+import './QuizSection.css';
 
 const QuizSection = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [characterScores, setCharacterScores] = useState({
-    Mostardinha: 0,
-    Maionese: 0,
-    Salsinha: 0,
-    'Velho Alho': 0,
-  });
-  const [resultCharacter, setResultCharacter] = useState(null);
-  const [showResults, setShowResults] = useState(false);
+  const [showResult, setShowResult] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
 
-  const quizQuestions = [
-    {
-      question: "Qual é seu maior medo?",
-      options: [
-        { text: "Ficar sozinho(a)", character: "Mostardinha" },
-        { text: "Não ser aceito(a)", character: "Maionese" },
-        { text: "Falhar", character: "Salsinha" },
-        { text: "Mudanças", character: "Velho Alho" }
-      ]
+  const characters = {
+    mostardinha: {
+      name: 'Mostardinha',
+      description: 'Você é corajoso, amoroso e sempre disposto a ajudar os amigos! Assim como Mostardinha, você valoriza a amizade acima de tudo.',
+      image: '/mostardinha.png'
     },
-    {
-      question: "Como você lida com desafios?",
-      options: [
-        { text: "Busco ajuda", character: "Maionese" },
-        { text: "Encaro de frente", character: "Mostardinha" },
-        { text: "Evito", character: "Salsinha" },
-        { text: "Penso muito antes de agir", character: "Velho Alho" }
-      ]
+    maionese: {
+      name: 'Maionese',
+      description: 'Você é doce, carinhoso e sempre pensa nos outros! Como Maionese, você espalha amor por onde passa.',
+      image: '/maionese.png'
     },
-    {
-      question: "O que te faz mais feliz?",
-      options: [
-        { text: "Brincar com amigos", character: "Salsinha" },
-        { text: "Aprender coisas novas", character: "Mostardinha" },
-        { text: "Ter tranquilidade", character: "Velho Alho" },
-        { text: "Sentir-se útil", character: "Maionese" }
-      ]
+    salsinha: {
+      name: 'Salsinha',
+      description: 'Você é alegre, divertido e adora fazer os outros sorrirem! Assim como Salsinha, você traz energia positiva para todos.',
+      image: '/salsinha.png'
     },
-    {
-      question: "Qual seu conselho favorito?",
-      options: [
-        { text: "Seja gentil", character: "Maionese" },
-        { text: "Tenha coragem", character: "Mostardinha" },
-        { text: "Pense antes de agir", character: "Velho Alho" },
-        { text: "Desfrute do momento", character: "Salsinha" }
-      ]
+    alho: {
+      name: 'Velho Alho',
+      description: 'Você é sábio, paciente e sempre tem um conselho valioso! Como o Velho Alho, você é a voz da experiência e da sabedoria.',
+      image: '/alho.png'
     }
-  ];
-
-  const handleAnswerSelect = (optionIndex) => {
-    setSelectedAnswer(optionIndex);
-    const selectedOption = quizQuestions[currentQuestion].options[optionIndex];
-    setCharacterScores(prevScores => ({
-      ...prevScores,
-      [selectedOption.character]: prevScores[selectedOption.character] + 1
-    }));
   };
 
-  const handleNextQuestion = () => {
-    if (currentQuestion < quizQuestions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      setSelectedAnswer(null);
+  const handleOptionSelect = (character) => {
+    setSelectedCharacter(characters[character]);
+    setShowResult(true);
+  };
+
+  const restartQuiz = () => {
+    setShowResult(false);
+    setSelectedCharacter(null);
+  };
+
+  const sendCharacterMessage = () => {
+    const email = document.getElementById('quizEmail').value;
+    if (email) {
+      alert(`Mensagem especial de ${selectedCharacter.name} será enviada para ${email}!`);
+      // Aqui você pode implementar a lógica de envio de e-mail
     } else {
-      const finalCharacter = Object.keys(characterScores).reduce((a, b) => characterScores[a] > characterScores[b] ? a : b);
-      setResultCharacter(finalCharacter);
-      setShowResults(true);
+      alert('Por favor, insira um e-mail válido.');
     }
-  };
-
-  const resetQuiz = () => {
-    setCurrentQuestion(0);
-    setSelectedAnswer(null);
-    setCharacterScores({
-      Mostardinha: 0,
-      Maionese: 0,
-      Salsinha: 0,
-      'Velho Alho': 0,
-    });
-    setResultCharacter(null);
-    setShowResults(false);
-  };
-
-  const getPersonagemImage = (personagem) => {
-    const images = {
-      "Mostardinha": mostardinhaImg,
-      "Maionese": maioneseImg,
-      "Salsinha": salsinhaImg,
-      "Velho Alho": alhoImg
-    };
-    return images[personagem] || "/assets/images/default.png";
   };
 
   return (
-    <section id="quiz" className="section quiz-section">
+    <section id="quiz" className="quiz-section">
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">🎭 Quiz Emocional</h2>
-          <p className="section-subtitle">Descubra qual personagem de Temperópolis é você!</p>
+          <h2 className="section-title">🎭 Qual Personagem de Temperópolis é Você?</h2>
+          <p className="section-subtitle">Descubra qual personagem mais combina com você!</p>
         </div>
-
-        {!showResults ? (
-          <div className="quiz-container fade-in-up">
-            <div className="question-box">
-              <h3>{quizQuestions[currentQuestion].question}</h3>
-            </div>
-
-            <div className="options-box">
-              {quizQuestions[currentQuestion].options.map((option, index) => (
-                <button
-                  key={index}
-                  className={`option-button ${selectedAnswer === index ? 'selected' : ''}`}
-                  onClick={() => handleAnswerSelect(index)}
-                  disabled={selectedAnswer !== null}
+        
+        <div className="quiz-container fade-in-up">
+          {!showResult ? (
+            <div className="quiz-question" id="quizQuestion">
+              <h3>Como você reage quando encontra um amigo triste?</h3>
+              <div className="quiz-options">
+                <button 
+                  className="quiz-option" 
+                  onClick={() => handleOptionSelect('mostardinha')}
+                  aria-label="Escolher opção: Ofereço um abraço e escuto com carinho"
                 >
-                  {option.text}
+                  🤗 Ofereço um abraço e escuto com carinho
                 </button>
-              ))}
+                <button 
+                  className="quiz-option" 
+                  onClick={() => handleOptionSelect('maionese')}
+                  aria-label="Escolher opção: Tento fazer algo especial para alegrar"
+                >
+                  💝 Tento fazer algo especial para alegrar
+                </button>
+                <button 
+                  className="quiz-option" 
+                  onClick={() => handleOptionSelect('salsinha')}
+                  aria-label="Escolher opção: Conto uma piada para fazer rir"
+                >
+                  🎉 Conto uma piada para fazer rir
+                </button>
+                <button 
+                  className="quiz-option" 
+                  onClick={() => handleOptionSelect('alho')}
+                  aria-label="Escolher opção: Dou um conselho sábio e carinhoso"
+                >
+                  🧠 Dou um conselho sábio e carinhoso
+                </button>
+              </div>
             </div>
-
-            {selectedAnswer !== null && (
-              <button
-                className="next-button btn btn-primary"
-                onClick={handleNextQuestion}
-              >
-                {currentQuestion < quizQuestions.length - 1 ? 'Próxima Pergunta' : 'Ver Resultado'}
-              </button>
-            )}
-          </div>
-        ) : (
-          <div className="results-container fade-in-up">
-            <h3>🎉 Parabéns! Você é o(a) {resultCharacter}!</h3>
-            <img
-              src={getPersonagemImage(resultCharacter)}
-              alt={`Personagem ${resultCharacter}`}
-              className="personagem-image"
-            />
-            <p>Sua personalidade se alinha mais com o(a) {resultCharacter}!</p>
-            <button
-              className="restart-button btn btn-secondary"
-              onClick={resetQuiz}
-            >
-              Refazer o Quiz
-            </button>
-          </div>
-        )}
-
-        {showResults && (
-          <div className="email-result-box">
-            <p>Quer receber seu resultado por e-mail?</p>
-            <form>
-              <input
-                type="email"
-                placeholder="Seu e-mail"
-                required
-                className="email-input"
-              />
-              <button type="submit" className="send-email-button btn btn-primary">
-                Enviar Resultado
-              </button>
-            </form>
-          </div>
-        )}
+          ) : (
+            <div className="quiz-result" id="quizResult">
+              <div className="result-character">
+                <img 
+                  id="resultImage" 
+                  src={selectedCharacter.image} 
+                  alt={selectedCharacter.name}
+                />
+                <h3 id="resultName">{selectedCharacter.name}</h3>
+                <p id="resultDescription">{selectedCharacter.description}</p>
+              </div>
+              <div className="result-actions">
+                <button 
+                  className="btn btn-primary" 
+                  onClick={restartQuiz}
+                  aria-label="Refazer o quiz"
+                >
+                  <span className="btn-icon" aria-hidden="true">🔄</span> Fazer Novamente
+                </button>
+                <div className="email-capture">
+                  <p>Receba uma mensagem especial do seu personagem por e-mail!</p>
+                  <div className="email-form">
+                    <label htmlFor="quizEmail" className="sr-only">Seu e-mail</label>
+                    <input 
+                      type="email" 
+                      placeholder="Seu e-mail" 
+                      id="quizEmail" 
+                      aria-label="Campo para digitar seu e-mail"
+                    />
+                    <button 
+                      className="btn btn-secondary" 
+                      onClick={sendCharacterMessage}
+                      aria-label="Receber mensagem por e-mail"
+                    >
+                      <span className="btn-icon" aria-hidden="true">✨</span> Receber
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
 };
 
 export default QuizSection;
+

@@ -1,109 +1,128 @@
-/* src/components/AudiobookSection.css */
+/* Audiobook Section */
 .audiobook-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
   color: white;
+  padding: 4rem 0;
 }
 
-.audiobook-section .section-title {
-  color: white;
-}
-
-.audiobook-section .section-subtitle {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.audiobook-player-container {
-  max-width: 800px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-}
-
-.audiobook-player {
-  display: flex;
+.audiobook-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
   align-items: center;
+  margin-top: 2rem;
+}
+
+.audiobook-info {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
-}
-
-.audiobook-cover img {
-  width: 24px;
-  height: auto;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.audiobook-cover img:hover {
-  transform: scale(1.05);
-}
-
-.audiobook-controls {
-  flex: 1;
-}
-
-.audiobook-title {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.audiobook-narrator {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.player-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.play-button {
-  background: #ffcc00;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.play-button:hover {
-  background: #ffbb00;
-  transform: scale(1.1);
-}
-
-.full-width-audio-player {
-  width: 100%;
-  margin-top: 1rem;
 }
 
 .audiobook-description {
-  color: #555;
-  line-height: 1.6;
-  margin-top: 1rem;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ECF0F1;
 }
 
+.audiobook-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #E74C3C, #C0392B);
+  color: white;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #F4D03F;
+  color: #F4D03F;
+}
+
+.btn-outline:hover {
+  background: #F4D03F;
+  color: #2C3E50;
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  margin-right: 0.5rem;
+}
+
+.youtube-embed {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.youtube-embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.8s ease-out;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .audiobook-player {
-    flex-direction: column;
-    text-align: center;
+  .audiobook-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
-  .audiobook-cover img {
-    width: 20px;
+  .audiobook-description {
+    font-size: 1rem;
   }
 
-  .player-controls {
-    justify-content: center;
+  .audiobook-cta {
+    align-items: stretch;
+  }
+
+  .youtube-embed {
+    padding-bottom: 75%; /* Ajusta proporção para mobile */
   }
 }
+
