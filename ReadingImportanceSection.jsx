@@ -1,60 +1,63 @@
 import React from 'react';
+import './ReadingImportanceSection.css';
 
 const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
   return (
-    <section id="leitura-familia" className="section reading-importance-section">
+    <section id="leitura-familia" className="more-than-story-section">
       <div className="container">
         <div className="section-header fade-in-up">
-          <h2 className="section-title">📖 Mais do que uma história.<br/>Um momento entre vocês.</h2>
-          <p className="section-subtitle">Transforme a leitura em um vínculo afetivo inesquecível</p>
+          <h2 className="section-title">📖 Mais do que uma história. Um momento entre vocês.</h2>
+          <p className="section-subtitle">Transforme a tela em tempo de conexão e afeto.</p>
         </div>
 
-        <div className="reading-content">
-          <div className="reading-text fade-in-left">
+        <div className="more-content">
+          {/* Texto e CTAs */}
+          <div className="more-text fade-in-right">
             <p>
-              Vivemos num mundo onde a tela afasta. Mas o Mostardinha foi criado para aproximar.
-              Ao ler com seu filho, você não está apenas passando uma história. <strong>Está compartilhando valores, emoções, riso e presença.</strong>
+              Vivemos num mundo onde a tela afasta. Mas o Mostardinha foi criado para aproximar. 
+              Ao ler com seu filho, você não está apenas passando uma história. Está compartilhando 
+              valores, emoções, riso e presença.
             </p>
             <p>
-              Uma leitura acompanhada é um presente. <strong>Cada capítulo pode ser uma semente de diálogo e encantamento entre vocês.</strong>
-            </p>
-            <p>
-              A leitura em família é um dos pilares mais importantes para o desenvolvimento infantil e para o fortalecimento dos laços familiares.
-              Ao compartilhar histórias, os pais não apenas estimulam a imaginação e a criatividade das crianças, mas também promovem o
-              desenvolvimento da linguagem, do vocabulário e do pensamento crítico.
+              Uma leitura acompanhada é um presente. Cada capítulo pode ser uma semente de diálogo 
+              e encantamento entre vocês.
             </p>
 
-            <div className="reading-benefits">
-              <h3>✨ Benefícios da Leitura em Família:</h3>
-              <ul>
-                <li>🧠 Estimula a imaginação e a criatividade</li>
-                <li>📚 Desenvolve a linguagem e o vocabulário</li>
-                <li>❤️ Fortalece os laços familiares</li>
-                <li>🌟 Cria memórias afetivas duradouras</li>
-                <li>🤝 Promove o aprendizado e a empatia</li>
-                <li>😴 Estabelece rotinas relaxantes antes de dormir</li>
-                <li>🎭 Desenvolve habilidades de interpretação e expressão</li>
-              </ul>
-            </div>
-
-            <div className="reading-cta">
-              <button onClick={() => setIsReadingTipsModalOpen(true)} className="btn btn-secondary btn-large">
-                💡 Como transformar essa leitura em um momento mágico?
+            <div className="more-actions">
+              <button 
+                onClick={() => setIsReadingTipsModalOpen(true)} 
+                className="btn btn-secondary btn-large" 
+                aria-haspopup="dialog" 
+                aria-expanded="false"
+              >
+                🟣 Como transformar essa leitura em um momento mágico?
               </button>
-              <a href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-large">
-                🎬 Leia junto com o Mostardinha
+              <a 
+                href="https://www.youtube.com/playlist?list=PLZ66dSUCt5cjFYfTfN44LgQbVV1d4X2d6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-large" 
+                aria-label="Ouvir o Audiobook no YouTube"
+              >
+                🟢 Leia junto com o Mostardinha
               </a>
             </div>
           </div>
 
-          <div className="reading-image fade-in-right">
-            <div className="image-card">
-              <div className="image-icon">👨‍👩‍👧‍👦</div>
-              <p>
-                <strong>Em Mostardinha, acreditamos no poder transformador das histórias.</strong><br/>
-                Incentive a leitura em sua casa e descubra um mundo de
-                possibilidades ao lado de seus filhos!
-              </p>
+          {/* Vídeo */}
+          <div className="more-visual fade-in-up">
+            <div className="video-wrapper">
+              <video 
+                controls 
+                autoPlay 
+                muted 
+                loop 
+                playsInline 
+                className="reading-scene-video"
+              >
+                <source src="/Mostardvideosite.mp4" type="video/mp4" />
+                Seu navegador não suporta o elemento de vídeo.
+              </video>
             </div>
           </div>
         </div>
@@ -64,3 +67,4 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
 };
 
 export default ReadingImportanceSection;
+
