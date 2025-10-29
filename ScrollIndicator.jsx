@@ -1,38 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import './ScrollIndicator.css'; // Você precisará criar este arquivo CSS
 
 const ScrollIndicator = () => {
   const [isVisible, setIsVisible] = useState(true);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Hide the indicator after some scroll activity
-      if (window.scrollY > 100) {
-        setIsVisible(false);
+      if (window.scrollY > 50) {
+        setHasScrolled(true);
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    // Set a timeout to hide the indicator after a few seconds if no scroll happens
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-    }, 5000); // Hide after 5 seconds
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timer);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (hasScrolled) {
+      const timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 3000); // Desaparece 3 segundos após o primeiro scroll
+      return () => clearTimeout(timer);
+    }
+  }, [hasScrolled]);
 
   if (!isVisible) return null;
 
   return (
-    <div className="scroll-indicator">
-      <span>Role para baixo para explorar!</span>
-      <span className="arrow-down">⬇️</span>
+    <div className={`scroll-indicator ${hasScrolled ? 'fade-out' : 'fade-in'}`}>
+      <p>Role para baixo e descubra Temperópolis! 👇</p>
     </div>
   );
 };
 
 export default ScrollIndicator;
-
