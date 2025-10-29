@@ -361,17 +361,9 @@ function App() {
       </section>
 
       {/* Footer */}
-      <Footer />
-
-      <ReadingTipsModal
-        isOpen={isReadingTipsModalOpen}
-        onClose={() => setIsReadingTipsModalOpen(false)}
-      />
+       <Footer />
       <ScrollIndicator />
-
-
     </div>
-  );
+  )
 }
-
 export default App;
