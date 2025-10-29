@@ -1,0 +1,39 @@
+.scroll-indicator {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(45deg, #F4D03F, #F39C12);
+  color: #2C3E50;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.5s ease-in-out;
+  text-align: center;
+}
+
+.scroll-indicator.fade-out {
+  opacity: 0;
+  pointer-events: none; /* Impede cliques após desaparecer */
+}
+
+.scroll-indicator.fade-in {
+  opacity: 1;
+}
+
+.scroll-indicator p {
+  margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .scroll-indicator {
+    bottom: 20px;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    width: 90%;
+  }
+}
