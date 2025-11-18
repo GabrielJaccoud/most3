@@ -24,23 +24,14 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
             </p>
 
             <div className="more-actions">
-              <button 
-                onClick={() => setIsReadingTipsModalOpen(true)} 
-                className="btn btn-secondary btn-large" 
-                aria-haspopup="dialog" 
-                aria-expanded="false"
-              >
-                🟣 Como transformar essa leitura em um momento mágico?
-              </button>
-              <a 
-                href="https://www.youtube.com/playlist?list=PLZ66dSUCt5cjFYfTfN44LgQbVV1d4X2d6" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-large" 
-                aria-label="Ouvir o Audiobook no YouTube"
-              >
-                🟢 Leia junto com o Mostardinha
-              </a>
+	              <button 
+	                onClick={() => setIsReadingTipsModalOpen(true)} 
+	                className="btn btn-secondary btn-large" 
+	                aria-haspopup="dialog" 
+	                aria-expanded="false"
+	              >
+	                🟣 Como transformar essa leitura em um momento mágico?
+	              </button>
             </div>
           </div>
 
