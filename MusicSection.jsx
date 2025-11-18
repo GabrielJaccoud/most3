@@ -172,14 +172,20 @@ const MusicSection = () => {
               <h3>{song.title}</h3>
               <p>{song.description}</p>
               <div className="music-card-buttons">
-                <button 
-                  onClick={() => playSong(song)}
+	                <button 
+	                  onClick={() => {
+	                    if (currentSong && currentSong.id === song.id && isPlaying) {
+	                      togglePlayPause();
+	                    } else {
+	                      playSong(song);
+	                    }
+	                  }}
                   className="btn btn-outline btn-small"
                   aria-label={`Tocar a música ${song.title}`}
                 >
                   <span className="btn-icon" aria-hidden="true">🎵</span> 
-                  Tocar
-                </button>
+	                  {currentSong && currentSong.id === song.id && isPlaying ? 'Pausar' : 'Tocar'}
+	                </button>
                 <a 
                   href={song.youtube} 
                   target="_blank" 
