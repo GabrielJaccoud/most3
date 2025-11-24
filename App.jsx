@@ -27,11 +27,72 @@ import FinalCTASection from './FinalCTASection'
 import Footer from './Footer'
 import ScrollIndicator from './ScrollIndicator'
 import ReadingTipsModal from './ReadingTipsModal'
+import GlobalAudioPlayer from './GlobalAudioPlayer'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const [isReadingTipsModalOpen, setIsReadingTipsModalOpen] = useState(false);
+
+  // Estado e lógica para o player de áudio global
+  const globalAudioRef = useRef(null);
+  const [isGlobalPlaying, setIsGlobalPlaying] = useState(false);
+  const [globalVolume, setGlobalVolume] = useState(50);
+  const [isPausedByOtherMedia, setIsPausedByOtherMedia] = useState(false);
+
+  // Efeito para iniciar a reprodução automática e configurar o volume
+  useEffect(() => {
+    globalAudioRef.current = new Audio('/Mostardinha.mp3');
+    globalAudioRef.current.volume = globalVolume / 100;
+    globalAudioRef.current.loop = true;
+    
+    // Tenta iniciar a reprodução automática (pode ser bloqueada pelo navegador)
+    globalAudioRef.current.play().then(() => {
+      setIsGlobalPlaying(true);
+    }).catch(error => {
+      console.log("Autoplay blocked. User interaction required.", error);
+      // Se o autoplay for bloqueado, o estado isGlobalPlaying permanece false
+    });
+
+    return () => {
+      if (globalAudioRef.current) {
+        globalAudioRef.current.pause();
+        globalAudioRef.current = null;
+      }
+    };
+  }, []);
+
+  const toggleGlobalPlayPause = () => {
+    if (globalAudioRef.current) {
+      if (isGlobalPlaying) {
+        globalAudioRef.current.pause();
+      } else {
+        globalAudioRef.current.play();
+      }
+      setIsGlobalPlaying(!isGlobalPlaying);
+    }
+  };
+
+  const handleGlobalVolumeChange = (e) => {
+    const newVolume = e.target.value;
+    setGlobalVolume(newVolume);
+    if (globalAudioRef.current) {
+      globalAudioRef.current.volume = newVolume / 100;
+    }
+  };
+
+  // Função para pausar a trilha sonora quando outra mídia começar
+  const pauseGlobalAudio = (shouldPause) => {
+    if (globalAudioRef.current) {
+      if (shouldPause && isGlobalPlaying) {
+        globalAudioRef.current.pause();
+        setIsPausedByOtherMedia(true);
+      } else if (!shouldPause && isPausedByOtherMedia) {
+        // Não inicia automaticamente, apenas remove o estado de pausa forçada
+        setIsPausedByOtherMedia(false);
+      }
+    }
+  };
 
 
 
@@ -302,17 +363,17 @@ function App() {
         </div>
       </section>
 
-      {/* Music Section */}
-      <MusicSection />
+	      {/* Music Section */}
+	      <MusicSection pauseGlobalAudio={pauseGlobalAudio} />
 
-      {/* Audiobook Section */}
-      <AudiobookSection />
+	      {/* Audiobook Section */}
+	      <AudiobookSection pauseGlobalAudio={pauseGlobalAudio} />
 
       {/* Quiz Section */}
       <QuizSection />
 
-      {/* Reading Importance Section */}
-      <ReadingImportanceSection setIsReadingTipsModalOpen={setIsReadingTipsModalOpen} />
+	      {/* Reading Importance Section */}
+	      <ReadingImportanceSection setIsReadingTipsModalOpen={setIsReadingTipsModalOpen} pauseGlobalAudio={pauseGlobalAudio} />
 
       {/* Voices Section */}
       <VoicesSection />
@@ -362,8 +423,16 @@ function App() {
 
       {/* Footer */}
        <Footer />
-      <ScrollIndicator />
-    </div>
+	      <ScrollIndicator />
+	      <GlobalAudioPlayer 
+	        audioSrc="/Mostardinha.mp3"
+	        isPlaying={isGlobalPlaying}
+	        togglePlayPause={toggleGlobalPlayPause}
+	        volume={globalVolume}
+	        handleVolumeChange={handleGlobalVolumeChange}
+	        isPausedByOtherMedia={isPausedByOtherMedia}
+	      />
+	    </div>
   )
 }
 export default App;

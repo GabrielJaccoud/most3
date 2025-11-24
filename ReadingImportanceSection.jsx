@@ -1,7 +1,7 @@
 import React from 'react';
 import './ReadingImportanceSection.css';
 
-const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
+const ReadingImportanceSection = ({ setIsReadingTipsModalOpen, pauseGlobalAudio }) => {
   return (
     <section id="leitura-familia" className="more-than-story-section">
       <div className="container">
@@ -38,14 +38,17 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen }) => {
           {/* Vídeo */}
           <div className="more-visual fade-in-up">
             <div className="video-wrapper">
-              <video 
-                controls 
-                autoPlay 
-                muted 
-                loop 
-                playsInline 
-                className="reading-scene-video"
-              >
+	              <video 
+	                controls 
+	                autoPlay 
+	                muted 
+	                loop 
+	                playsInline 
+	                className="reading-scene-video"
+	                onPlay={() => pauseGlobalAudio(true)}
+	                onPause={() => pauseGlobalAudio(false)}
+	                onEnded={() => pauseGlobalAudio(false)}
+	              >
                 <source src="/Mostardvideosite.mp4" type="video/mp4" />
                 Seu navegador não suporta o elemento de vídeo.
               </video>

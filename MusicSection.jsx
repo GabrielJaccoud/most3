@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-const MusicSection = () => {
+const MusicSection = ({ pauseGlobalAudio }) => {
   const [currentSong, setCurrentSong] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(50);
@@ -114,6 +114,7 @@ const MusicSection = () => {
       audioRef.current.src = song.src;
       audioRef.current.play();
       setIsPlaying(true);
+      pauseGlobalAudio(true); // Pausa a trilha sonora global
     }
   };
 
@@ -121,8 +122,10 @@ const MusicSection = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        pauseGlobalAudio(false); // Retorna a trilha sonora global
       } else {
         audioRef.current.play();
+        pauseGlobalAudio(true); // Pausa a trilha sonora global
       }
       setIsPlaying(!isPlaying);
     }
@@ -161,7 +164,10 @@ const MusicSection = () => {
                 className="volume-slider"
               />
             </div>
-            <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+            <audio ref={audioRef} onEnded={() => {
+              setIsPlaying(false);
+              pauseGlobalAudio(false); // Retorna a trilha sonora global ao terminar
+            }} />
           </div>
         )}
 

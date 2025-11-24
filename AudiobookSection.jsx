@@ -2,7 +2,7 @@
 import React from 'react';
 import './AudiobookSection.css';
 
-const AudiobookSection = () => {
+const AudiobookSection = ({ pauseGlobalAudio }) => {
   return (
     <section id="audiobook" className="audiobook-section">
       <div className="container">
@@ -46,11 +46,17 @@ const AudiobookSection = () => {
           <div className="youtube-embed fade-in-right">
             <iframe 
               src="https://www.youtube.com/embed/BSzPFZICl5c?start=663" 
-              title="Audiobook Mostardinha" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen
-            >
+	              title="Audiobook Mostardinha" 
+	              frameBorder="0" 
+	              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+	              allowFullScreen
+	              onLoad={() => {
+	                // Quando o iframe carrega, tentamos pausar a trilha sonora global
+	                // Nota: A pausa automática de mídia em iframes é complexa e depende do navegador.
+	                // O ideal seria usar a API do YouTube, mas vamos tentar o mais simples primeiro.
+	                pauseGlobalAudio(true);
+	              }}
+	            >
             </iframe>
           </div>
         </div>
