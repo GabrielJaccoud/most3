@@ -42,7 +42,7 @@ function App() {
 
   // Efeito para iniciar a reprodução automática e configurar o volume
   useEffect(() => {
-    globalAudioRef.current = new Audio('/Mostardinha.mp3');
+    globalAudioRef.current = new Audio('/Mostardinha.wav');
     globalAudioRef.current.volume = globalVolume / 100;
     globalAudioRef.current.loop = true;
     
