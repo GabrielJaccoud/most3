@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const GlobalAudioPlayer = ({ audioSrc, isPlaying, togglePlayPause, volume, handleVolumeChange, isPausedByOtherMedia }) => {
   return (
-    <div className="audio-player-fixed global-player fade-in-up">
+    <div className="audio-player-fixed global-player">
       <div className="audio-player-content">
         <div className="audio-info">
           <span className="audio-icon-animated">{isPlaying ? '🎶' : '🔇'}</span>

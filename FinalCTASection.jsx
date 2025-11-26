@@ -33,13 +33,10 @@ const FinalCTASection = () => {
           
           <div className="cta-image">
             <img 
-              src="/assets/images/mostardinha.png" 
-              alt="Mostardinha" 
-              className="cta-mostardinha"
-              loading="lazy"
-              onError={(e) => {
-                e.target.src = '/assets/images/Mostardinha(2).png';
-              }}
+              src="/mostardinha.png" 
+	              alt="Mostardinha" 
+	              className="cta-mostardinha"
+	              loading="lazy"
             />
           </div>
         </div>
