@@ -1,21 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const GlobalAudioPlayer = ({ audioSrc, isPlaying, togglePlayPause, volume, handleVolumeChange, isPausedByOtherMedia }) => {
-  const [showPlayer, setShowPlayer] = useState(false);
-
-  useEffect(() => {
-    // Mostrar o player após um pequeno delay para garantir que o App.jsx carregou
-    const timer = setTimeout(() => {
-      setShowPlayer(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!showPlayer) {
-    return null;
-  }
-
   return (
     <div className="audio-player-fixed global-player fade-in-up">
       <div className="audio-player-content">
