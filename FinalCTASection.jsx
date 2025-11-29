@@ -33,7 +33,7 @@ const FinalCTASection = () => {
           
           <div className="cta-image">
             <img 
-              src="/mostardinha_cta_novo.png" ovo.png" 
+              src="/mostardinha_cta_novo.png" 
 	              alt="Mostardinha" 
 	              className="cta-mostardinha"
 	              loading="lazy"
