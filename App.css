@@ -149,7 +149,7 @@ body {
   align-items: center;
   position: relative;
   background: linear-gradient(135deg, #85C1E9 0%, #F8C471 50%, #82E0AA 100%);
-  overflow: visible;
+  overflow: hidden;
   padding-top: 80px;
 }
 
