@@ -2,8 +2,8 @@
 
 .global-player {
     position: fixed;
-    top: 80px;
-    left: 20px;
+    top: 20px;
+    right: 20px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -77,11 +77,11 @@
 /* Responsividade */
 @media (max-width: 768px) {
     .global-player {
-        top: 80px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: calc(100% - 20px);
-        max-width: none;
+        top: 20px;
+        right: 10px;
+        
+        width: auto;
+        max-width: 300px;
         padding: 0.75rem;
     }
     
