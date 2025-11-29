@@ -1,5 +1,5 @@
 import React from 'react';
-import gabrielJaccoud from '/gabriel_jaccoud_novo.png';
+import gabrielJaccoud from '/20.png';
 import jaqueline from '/jaqueline.jpg';
 import carol from '/carol.jpg';
 import klaudiaLopes from '/klaudia-lopes.jpg';
