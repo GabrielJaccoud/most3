@@ -12,7 +12,7 @@ import grazi from '/grazi.jpg';
 import helderCanto from '/helder-canto.jpg';
 import nathaliaJaccoud from '/nathalia-jaccoud.jpg';
 import andreNobrega from '/andre-nobrega.jpg';
-import antonioJaccoud from '/antonio-jaccoud.jpg';
+import antonioJaccoud from '/antonio_jaccoud_novo.jpg';
 
 const VoicesSection = () => {
   const voices = [
