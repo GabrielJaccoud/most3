@@ -25,20 +25,24 @@ import PublisherSection from './PublisherSection'
 import AuthorSection from './AuthorSection'
 import FinalCTASection from './FinalCTASection'
 import Footer from './Footer'
+
 import ScrollIndicator from './ScrollIndicator'
 import ReadingTipsModal from './ReadingTipsModal'
+
 import GlobalAudioPlayer from './GlobalAudioPlayer'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  const [isReadingTipsModalOpen, setIsReadingTipsModalOpen] = useState(false);
+
 
   // Estado e lógica para o player de áudio global
   const globalAudioRef = useRef(null);
   const [isGlobalPlaying, setIsGlobalPlaying] = useState(false);
   const [globalVolume, setGlobalVolume] = useState(50);
   const [isPausedByOtherMedia, setIsPausedByOtherMedia] = useState(false);
+  const [isReadingTipsModalOpen, setIsReadingTipsModalOpen] = useState(false);
+
 
   // Efeito para iniciar a reprodução automática e configurar o volume
   useEffect(() => {
@@ -423,6 +427,10 @@ function App() {
 
       {/* Footer */}
        <Footer />
+      <ReadingTipsModal 
+        isOpen={isReadingTipsModalOpen} 
+        onClose={() => setIsReadingTipsModalOpen(false)} 
+      />
 	      <ScrollIndicator />
 	      <GlobalAudioPlayer 
 	        
