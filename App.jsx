@@ -30,6 +30,8 @@ import ScrollIndicator from './ScrollIndicator'
 import ReadingTipsModal from './ReadingTipsModal'
 
 import GlobalAudioPlayer from './GlobalAudioPlayer'
+import NewsletterSection from './NewsletterSection'
+import { useState } from 'react'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -398,32 +400,7 @@ function App() {
       <FinalCTASection />
 
       {/* Newsletter Section */}
-      <section id="newsletter" className="section newsletter-section">
-        <div className="container">
-          <div className="section-header fade-in-up">
-            <h2 className="section-title">💌 Newsletter</h2>
-            <p className="section-subtitle">Receba novidades do mundo de Temperópolis</p>
-          </div>
-          <div className="newsletter-form">
-            <form>
-              <input
-                type="text"
-                placeholder="Seu nome"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Seu e-mail"
-                required
-              />
-              <button type="submit" className="btn btn-primary" style={{width: '100%'}}>
-                <span>✨</span>
-                Quero receber!
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+<NewsletterSection />
 
       {/* Footer */}
        <Footer />
