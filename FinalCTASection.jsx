@@ -19,16 +19,7 @@ const FinalCTASection = () => {
               <span className="btn-icon" aria-hidden="true">🛒</span>
               Comprar o livro - R$ 34,99
             </a>
-            <a 
-              href="https://www.youtube.com/watch?v=BSzPFZICl5c&t=663s" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="btn btn-secondary btn-large" 
-              aria-label="Ouvir o audiobook gratuito do Mostardinha no YouTube"
-            >
-              <span className="btn-icon" aria-hidden="true">🎧</span>
-              Ouvir o audiobook
-            </a>
+
           </div>
           
           <div className="cta-image">
