@@ -174,9 +174,9 @@ const MusicSection = ({ pauseGlobalAudio }) => {
         <div className="music-grid">
           {songs.map((song) => (
             <div key={song.id} className="music-card fade-in-up">
-              <div className="music-icon">{song.icon}</div>
-              <h3>{song.title}</h3>
-              <p>{song.description}</p>
+	              <div className="music-icon" aria-hidden="true">{song.icon}</div>
+	              <h3>{song.title}</h3>
+	              <p>{song.description}</p>
               <div className="music-card-buttons">
 	                <button 
 	                  onClick={() => {

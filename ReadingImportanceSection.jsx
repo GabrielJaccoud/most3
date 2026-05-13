@@ -38,13 +38,11 @@ const ReadingImportanceSection = ({ setIsReadingTipsModalOpen, pauseGlobalAudio 
           {/* Vídeo */}
           <div className="more-visual fade-in-up">
             <div className="video-wrapper">
-	              <video 
-	                controls 
-	                autoPlay 
-	                muted 
-	                loop 
-	                playsInline 
-	                className="reading-scene-video"
+		              <video 
+		                controls 
+		                loop 
+		                playsInline 
+		                className="reading-scene-video"
 	                onPlay={() => pauseGlobalAudio(true)}
 	                onPause={() => pauseGlobalAudio(false)}
 	                onEnded={() => pauseGlobalAudio(false)}

@@ -50,12 +50,10 @@ const AudiobookSection = ({ pauseGlobalAudio }) => {
 	              frameBorder="0" 
 	              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
 	              allowFullScreen
-	              onLoad={() => {
-	                // Quando o iframe carrega, tentamos pausar a trilha sonora global
-	                
-	                
-	                pauseGlobalAudio(true);
-	              }}
+		              loading="lazy"
+		              onLoad={() => {
+		                // Removido o pause automático no load para não ser intrusivo
+		              }}
 	            >
             </iframe>
           </div>

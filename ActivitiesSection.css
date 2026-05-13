@@ -1,0 +1,103 @@
+.activities-section {
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFECB3 100%);
+    padding: 80px 0;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.activity-preview-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border: 3px dashed #F39C12;
+    transition: transform 0.3s ease;
+}
+
+.activity-preview-card:hover {
+    transform: translateY(-5px) rotate(2deg);
+}
+
+.activity-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.activity-preview-card h3 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.lead-capture-box {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.lead-capture-box h3 {
+    margin-bottom: 25px;
+    color: #1a252f;
+}
+
+.lead-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.lead-form input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.lead-form input:focus {
+    border-color: #F39C12;
+}
+
+.privacy-note {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.success-message {
+    text-align: center;
+    background: white;
+    padding: 60px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .lead-form {
+        flex-direction: column;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+    }
+}

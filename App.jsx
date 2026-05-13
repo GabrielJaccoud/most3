@@ -25,6 +25,9 @@ import PublisherSection from './PublisherSection'
 import AuthorSection from './AuthorSection'
 import FinalCTASection from './FinalCTASection'
 import Footer from './Footer'
+import ActivitiesSection from './ActivitiesSection'
+import TestimonialsSection from './TestimonialsSection'
+import ParentsSection from './ParentsSection'
 
 import ScrollIndicator from './ScrollIndicator'
 import ReadingTipsModal from './ReadingTipsModal'
@@ -50,13 +53,8 @@ function App() {
     globalAudioRef.current.volume = globalVolume / 100;
     globalAudioRef.current.loop = true;
     
-    // Tenta iniciar a reprodução automática (pode ser bloqueada pelo navegador)
-    globalAudioRef.current.play().then(() => {
-      setIsGlobalPlaying(true);
-    }).catch(error => {
-      console.log("Autoplay blocked. User interaction required.", error);
-      // Se o autoplay for bloqueado, o estado isGlobalPlaying permanece false
-    });
+    // Autoplay desabilitado por padrão para melhor UX
+    setIsGlobalPlaying(false);
 
     return () => {
       if (globalAudioRef.current) {
@@ -88,12 +86,19 @@ function App() {
   // Função para pausar a trilha sonora quando outra mídia começar
   const pauseGlobalAudio = (shouldPause) => {
     if (globalAudioRef.current) {
-      if (shouldPause && isGlobalPlaying) {
-        globalAudioRef.current.pause();
-        setIsPausedByOtherMedia(true);
-      } else if (!shouldPause && isPausedByOtherMedia) {
-        // Não inicia automaticamente, apenas remove o estado de pausa forçada
-        setIsPausedByOtherMedia(false);
+      if (shouldPause) {
+        if (isGlobalPlaying) {
+          globalAudioRef.current.pause();
+          setIsPausedByOtherMedia(true);
+          setIsGlobalPlaying(false);
+        }
+      } else {
+        if (isPausedByOtherMedia) {
+          globalAudioRef.current.play().then(() => {
+            setIsGlobalPlaying(true);
+            setIsPausedByOtherMedia(false);
+          }).catch(err => console.log("Erro ao retomar áudio:", err));
+        }
       }
     }
   };
@@ -192,7 +197,7 @@ function App() {
         <div className="container">
           <div className="nav-content">
             <a href="#inicio" className="nav-logo" onClick={(e) => { e.preventDefault(); scrollToSection('inicio') }}>
-              <img src={mostardinha} alt="Mostardinha" className="nav-logo-img" />
+              <img src={mostardinha} alt="Mostardinha" className="nav-logo-img" loading="lazy" />
               <span className="nav-logo-text">Mostardinha</span>
             </a>
 
@@ -207,6 +212,9 @@ function App() {
               <li><a href="#vozes" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('vozes') }}>Vozes</a></li>
               <li><a href="#bastidores" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('bastidores') }}>Bastidores</a></li>
               <li><a href="#editora-humanizar" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('editora-humanizar') }}>Editora</a></li>
+              <li><a href="#atividades" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('atividades') }}>Atividades</a></li>
+              <li><a href="#depoimentos" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('depoimentos') }}>Depoimentos</a></li>
+              <li><a href="#para-pais" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('para-pais') }}>Para Pais</a></li>
               <li><a href="#newsletter" className="nav-link" onClick={(e) => { e.preventDefault(); scrollToSection('newsletter') }}>Newsletter</a></li>
             </ul>
 
@@ -233,7 +241,7 @@ function App() {
 
       {/* Hero Section */}
       <section id="inicio" className="hero">
-        <div className="hero-background">
+        <div className="hero-background" loading="lazy">
           <div className="parallax-layer parallax-sky"></div>
           <div className="parallax-layer parallax-clouds"></div>
           <div className="parallax-layer parallax-mountains"></div>
@@ -373,8 +381,17 @@ function App() {
 	      {/* Audiobook Section */}
 	      <AudiobookSection pauseGlobalAudio={pauseGlobalAudio} />
 
-      {/* Quiz Section */}
-      <QuizSection />
+	      {/* Quiz Section */}
+	      <QuizSection />
+
+	      {/* Activities Section */}
+	      <ActivitiesSection />
+
+	      {/* Testimonials Section */}
+	      <TestimonialsSection />
+
+	      {/* Parents Section */}
+	      <ParentsSection />
 
 	      {/* Reading Importance Section */}
 	      <ReadingImportanceSection setIsReadingTipsModalOpen={setIsReadingTipsModalOpen} pauseGlobalAudio={pauseGlobalAudio} />
@@ -432,14 +449,13 @@ function App() {
         onClose={() => setIsReadingTipsModalOpen(false)} 
       />
 	      <ScrollIndicator />
-	      <GlobalAudioPlayer 
-	        
-	        isPlaying={isGlobalPlaying}
-	        togglePlayPause={toggleGlobalPlayPause}
-	        volume={globalVolume}
-	        handleVolumeChange={handleGlobalVolumeChange}
-	        isPausedByOtherMedia={isPausedByOtherMedia}
-	      />
+      <GlobalAudioPlayer 
+        isPlaying={isGlobalPlaying}
+        togglePlayPause={toggleGlobalPlayPause}
+        volume={globalVolume}
+        handleVolumeChange={handleGlobalVolumeChange}
+        isPausedByOtherMedia={isPausedByOtherMedia}
+      />
 	    </div>
   )
 }

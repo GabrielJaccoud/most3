@@ -1,35 +1,44 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import './GlobalAudioPlayer.css';
 
-const GlobalAudioPlayer = ({ audioSrc, isPlaying, togglePlayPause, volume, handleVolumeChange, isPausedByOtherMedia }) => {
+const GlobalAudioPlayer = ({ isPlaying, togglePlayPause, volume, handleVolumeChange, isPausedByOtherMedia }) => {
   return (
-    <div className="audio-player-fixed global-player">
-      <div className="audio-player-content">
-        <div className="audio-info">
-          <span className="audio-icon-animated">{isPlaying ? '🎶' : '🔇'}</span>
-          <p>Trilha Sonora: Mostardinha</p>
+    <div className={`global-audio-bubble ${isPlaying ? 'is-playing' : ''}`}>
+      {/* Botão de Controle Principal */}
+      <button 
+        onClick={togglePlayPause} 
+        className="bubble-toggle"
+        disabled={isPausedByOtherMedia}
+        aria-label={isPlaying ? "Pausar Trilha" : "Tocar Trilha"}
+      >
+        {isPausedByOtherMedia ? '⏳' : (isPlaying ? '⏸' : '▶')}
+      </button>
+
+      {/* Conteúdo Expansível no Hover */}
+      <div className="bubble-content">
+        <div className="bubble-info">
+          <span className="track-name">Trilha Sonora</span>
+          <span className="status-text">
+            {isPausedByOtherMedia ? 'Pausado p/ vídeo' : (isPlaying ? 'Tocando agora' : 'Pausado')}
+          </span>
         </div>
-        <div className="player-controls">
-          <button 
-            onClick={togglePlayPause} 
-            className="audio-btn-fixed"
-            disabled={isPausedByOtherMedia}
-            title={isPausedByOtherMedia ? "Pausado por outra mídia" : isPlaying ? "Pausar Trilha" : "Tocar Trilha"}
-          >
-            {isPlaying ? '⏸️' : '▶️'}
-          </button>
+
+        <div className="bubble-volume">
+          <span style={{fontSize: '0.8rem'}}>🔈</span>
           <input
             type="range"
             min="0"
             max="100"
             value={volume}
             onChange={handleVolumeChange}
-            className="volume-slider"
-            title="Volume"
+            aria-label="Volume"
           />
+          <span style={{fontSize: '0.8rem'}}>🔊</span>
         </div>
       </div>
+
       {isPausedByOtherMedia && (
-        <p className="pause-message">Pausado para reprodução de outra mídia.</p>
+        <span className="bubble-pause-msg">Pausado para o vídeo</span>
       )}
     </div>
   );

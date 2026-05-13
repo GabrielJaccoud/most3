@@ -79,7 +79,7 @@ const Footer = () => {
             <ul>
               <li>
                 <a 
-                  href="https://www.youtube.com/@mundoninoss" 
+                  href="https://www.youtube.com/@mundoninuss" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   aria-label="Visitar o canal Mundo Ninus no YouTube"
